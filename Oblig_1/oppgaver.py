@@ -92,7 +92,16 @@ def bisection(f, a, b, N):
     return (a_n + b_n) / 2
 
 
-# Defines the function f(x)
+# function in a)
 f = lambda x: x ** 3 - 9
 #function f, intervall [2,3], 4 calculations
 print(bisection(f, 2, 3, 4))
+
+# function in b)
+g = lambda x: 3*x**3 + x**2 - x - 5
+print()
+
+# fumction in c)
+h = lambda x: (m.cos(x)**2 + 6 - x)
+print()
+
