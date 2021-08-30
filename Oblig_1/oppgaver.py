@@ -40,7 +40,8 @@ print(51.01275208274999 - 51.01275208274523)
 
 def function_a(x):
     # sec(x) = 1/cos(x)
-    return (1 - (1/m.cos(x)))/(m.tan(x)**2)
+    return (1 - (1 / m.cos(x))) / (m.tan(x) ** 2)
+
 
 print("\nValues of function in a)")
 for i in range(1, 15):
@@ -50,7 +51,8 @@ for i in range(1, 15):
 
 # re-written function of a)
 def optimized_function_a(x):
-    return -1/(1+(1/m.cos(x)))
+    return -1 / (1 + (1 / m.cos(x)))
+
 
 print("\nValues of optimized function in a)")
 for i in range(1, 15):
@@ -59,5 +61,38 @@ for i in range(1, 15):
 
 # Chapter 0.4, CP5
 # Venter med denne jævelen
-print(m.hypot(3344556600,1.2222222))
-print(m.hypot(3,4))
+print(m.hypot(3344556600, 1.2222222))
+print(m.hypot(3, 4))
+
+
+# Chapter 1.1, CP1
+
+#function f, intervall [a,b], N calculations
+def bisection(f, a, b, N):
+    if f(a) * f(b) >= 0:
+        print("Bisection method fails")
+        return None
+    a_n = a
+    b_n = b
+    for n in range(1, N + 1):
+        m_n = (a_n + b_n) / 2
+        f_m_n = f(m_n)
+        if f(a_n) * f_m_n < 0:
+            a_n = a_n
+            b_n = m_n
+        elif f(b_n) * f_m_n < 0:
+            a_n = m_n
+            b_n = b_n
+        elif f_m_n == 0:
+            print("Found exact solution.")
+            return m_n
+        else:
+            print("Bisection method fails.")
+            return None
+    return (a_n + b_n) / 2
+
+
+# Defines the function f(x)
+f = lambda x: x ** 3 - 9
+#function f, intervall [2,3], 4 calculations
+print(bisection(f, 2, 3, 4))
